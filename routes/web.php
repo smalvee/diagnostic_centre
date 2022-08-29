@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +27,12 @@ Route::get('/', function () {
 Route::group(['missleware' => ['auth']], function(){
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 });
+
+
+Route::get('new_patient', [PatientController::class, 'new_patient'])->middleware(['auth']);
+Route::get('old_patient', [PatientController::class, 'old_patient'])->middleware(['auth']);
+
+Route::get('payment_collection', [PaymentController::class, 'index'])->middleware(['auth']);
+Route::get('due_form', [PaymentController::class, 'due_form'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';
