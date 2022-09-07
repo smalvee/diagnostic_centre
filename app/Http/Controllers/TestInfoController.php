@@ -2,24 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
+use App\Models\test_info;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class TestInfoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function new_patient()
+    public function index()
     {
-        return view('new_patient');
-    }
-
-    public function old_patient()
-    {
-        return view('old_patient');
+        //
     }
 
     /**
@@ -40,17 +35,14 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $patient_insert = new Patient;
+        $test_category = new test_info();
 
-        $patient_insert->p_name            = $request->input('p_name');
-        $patient_insert->p_age            = $request->input('p_age');
-        $patient_insert->p_mobile            = $request->input('p_mobile');
-        $patient_insert->p_gender            = $request->input('p_gender');
-        $patient_insert->p_blood            = $request->input('p_blood');
-        $patient_insert->p_address            = $request->input('p_address');
-        $patient_insert->p_d_name            = $request->input('p_d_name');
-        $patient_insert->p_r_d_name            = $request->input('p_r_d_name'); 
-        $patient_insert->save();
+        $test_category->sub_category            = $request->input('sub_category');
+        $test_category->test_name            = $request->input('test_name');
+        $test_category->price            = $request->input('price');
+        $test_category->referref_fee            = $request->input('referref_fee');
+
+        $test_category->save();
         return redirect()->back()->with('status', 'Add seccessfully');
     }
 

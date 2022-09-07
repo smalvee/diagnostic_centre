@@ -2,24 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
+use App\Models\test;
 use Illuminate\Http\Request;
+use PHPUnit\Util\Test as UtilTest;
 
-class PatientController extends Controller
+class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function new_patient()
+    public function index()
     {
-        return view('new_patient');
+        return view('test_category_entry');
     }
 
-    public function old_patient()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function test_entry()
     {
-        return view('old_patient');
+        return view('test_entry');
     }
 
     /**
@@ -40,27 +46,21 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $patient_insert = new Patient;
+        $test_category = new Test;
 
-        $patient_insert->p_name            = $request->input('p_name');
-        $patient_insert->p_age            = $request->input('p_age');
-        $patient_insert->p_mobile            = $request->input('p_mobile');
-        $patient_insert->p_gender            = $request->input('p_gender');
-        $patient_insert->p_blood            = $request->input('p_blood');
-        $patient_insert->p_address            = $request->input('p_address');
-        $patient_insert->p_d_name            = $request->input('p_d_name');
-        $patient_insert->p_r_d_name            = $request->input('p_r_d_name'); 
-        $patient_insert->save();
+        $test_category->main_category            = $request->input('main_category');
+        $test_category->sub_category            = $request->input('sub_category');
+        $test_category->save();
         return redirect()->back()->with('status', 'Add seccessfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\r  $r
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(test $r)
     {
         //
     }
@@ -68,10 +68,10 @@ class PatientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\r  $r
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(test $r)
     {
         //
     }
@@ -80,10 +80,10 @@ class PatientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\r  $r
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, test $r)
     {
         //
     }
@@ -91,11 +91,13 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\r  $r
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $test_category = test::find($id);
+        $test_category->delete();
+        return redirect()->back()->with('status', 'Deleted seccessfully');
     }
 }

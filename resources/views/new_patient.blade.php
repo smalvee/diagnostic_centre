@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <title>New Patient</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -21,52 +22,57 @@
         <div class="heading">
             <h4>Patient Details:</h4>
         </div>
-        <div>
-            <label class="first-row">Patient Name<span style="color:red;">*</span>:</label>
-            <input required>
+        <form action="{{ url('patient_insert') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div>
+                <label class="first-row">Patient Name<span style="color:red;">*</span>:</label>
+                <input name="p_name" required>
 
-            <label class="second-row">Patient Age:</label>
-            <input>
+                <label class="second-row">Patient Age:</label>
+                <input name="p_age" required>
 
-            <br>
+                <br>
 
-            <label class="first-row">Phone/Mobile<span style="color:red;">*</span>:</label>
-            <input required>
-            <label class="second-row">Gender:</label>
-            <select>
-                <option>--Select--</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Common</option>
-            </select>
+                <label class="first-row">Phone/Mobile<span style="color:red;">*</span>:</label>
+                <input name="p_mobile" required>
+                <label class="second-row">Gender:</label>
+                <select name="p_gender" required>
+                    <option>--Select--</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Common</option>
+                </select>
 
-            <br>
+                <br>
 
-            <label class="first-row">Blood Group<span style="color:red;">*</span>:</label>
-            <select required>
-                <option>--Select--</option>
-                <option>A+</option>
-                <option>A-</option>
-                <option>AB+</option>
-                <option>AB-</option>
-                <option>B+</option>
-                <option>B-</option>
-                <option>O+</option>
-                <option>O-</option>
+                <label class="first-row">Blood Group<span style="color:red;">*</span>:</label>
+                <select name="p_blood" required>
+                    <option>--Select--</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>O+</option>
+                    <option>O-</option>
 
-            </select>
-            <br>
-            <label class="first-row">Address:</label>
-            <input class="ex-large">
-            <br>
-            <label class="first-row">Doctor Name:</label>
-            <input class="ex-large">
-            <br>
-            <label class="first-row">Refered By<span style="color:red;">*</span>:</label>
-            <input class="ex-large" required>
-            <br>
-            <button class="btn-margine btn btn-primary">Save Information</button>
-        </div>
+                </select>
+                <br>
+                <label class="first-row">Address:</label>
+                <input name="p_address" class="ex-large">
+                <br>
+                <label class="first-row">Doctor Name:</label>
+                <input name="p_d_name" class="ex-large">
+                <br>
+                <label class="first-row">Refered By<span style="color:red;">*</span>:</label>
+                <input name="p_r_d_name" class="ex-large" required>
+                <br>
+                <button type="submit" class="btn-margine btn btn-primary">Save Information</button>
+            </div>
+        </form>
+
+
 
         <br>
 
@@ -104,19 +110,35 @@
             </table>
             <br>
             <br>
+            <?php
+
+            use App\Models\test_info;
+
+            $test_info = test_info::all();
+            $number = 1;
+            // echo $count;
+            // die();
+            ?>
+
             <label class="first-row">Add Test<span style="color:red;">*</span>:</label>
             <select class="ex-large" style="width:48.8rem;" required>
                 <option>--Select--</option>
-                <option>A+</option>
-                <option>A-</option>
-                <option>AB+</option>
-                <option>AB-</option>
-                <option>B+</option>
-                <option>B-</option>
-                <option>O+</option>
-                <option>O-</option>
+                @foreach ($test_info as $info)
+                <option>{{ $info->test_name}}</option>
+                @endforeach
+
             </select>
-            <button class="btn btn-primary">Add</button>
+            <!-- <label class="first-row">Add Test<span style="color:red;">*</span>:</label>
+            <form>
+            <select class="ex-large" style="width:48.8rem;" required>
+                    <option>--Select--</option>
+                    @foreach ($test_info as $info)
+                    <option>{{ $info->test_name}}</option>
+                    @endforeach
+
+                </select>
+                <button class="btn btn-primary">De</button>
+            </form> -->
             <br>
             <label class="first-row">Price:</label>
             <input readonly>

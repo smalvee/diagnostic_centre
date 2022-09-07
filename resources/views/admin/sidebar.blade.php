@@ -66,8 +66,8 @@
         <a href="#" class="">Referral Doctor payment</a>
         <a href="#" class="">Purpose Entry</a>
         <a href="#" class="">Expense Entry</a>
-        <a href="#" class="">Test Category Entry</a>
-        <a href="#" class="">test Entry</a>
+        <a href="test_category_entry" class="">Test Category Entry</a>
+        <a href="test_entry" class="">test Entry</a>
     </div>
 
     <button class="dropdown-btn">Management
