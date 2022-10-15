@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -16,7 +17,7 @@
     <div class="main">
 
         <div>
-            <h4>New Patient Entry / Add Test:</h4>
+            <h4>New Patient Entry:</h4>
         </div>
         <br>
         <div class="heading">
@@ -114,17 +115,17 @@
 
             use App\Models\test_info;
 
-            $test_info = test_info::all();
+            $test_info = test_info::orderBy('test_name', 'ASC')->get();
             $number = 1;
             // echo $count;
             // die();
             ?>
 
             <label class="first-row">Add Test<span style="color:red;">*</span>:</label>
-            <select class="ex-large" style="width:48.8rem;" required>
+            <select class="testinfo" style="width:48.8rem;" required>
                 <option>--Select--</option>
                 @foreach ($test_info as $info)
-                <option>{{ $info->test_name}}</option>
+                <option value="{{ $info->id}}">{{ $info->test_name}}</option>
                 @endforeach
 
             </select>
@@ -141,10 +142,10 @@
             </form> -->
             <br>
             <label class="first-row">Price:</label>
-            <input readonly>
+            <input type="text" class="testprice" readonly>
 
             <label class="second-row">Referrer Fee:</label>
-            <input readonly>
+            <input class="testreferrer" readonly>
         </div>
 
         <br>
@@ -234,6 +235,70 @@
                 }
             });
         }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $(document).on('change','.testinfo',function(){
+                // console.log("hmm it get");
+
+                var test_name=$(this).val();
+
+                var a=$(this).parent();
+                // console.log(test_name);
+                var op="";
+                $.ajax({
+                    type:'get',
+                    url:'{!!URL::to('findPrice')!!}',
+                    data:{'id':test_name},
+                    dataType:'json',
+                    success:function(data){
+                        console.log("price");
+                        console.log(data.price);
+
+                        a.find('.testprice').val(data.price);
+                        
+                    },
+                    error:function(){
+
+                    }
+                });
+            });
+
+
+            $(document).on('change','.testinfo',function(){
+                // console.log("hmm it get");
+
+                var test_name=$(this).val();
+
+                var a=$(this).parent();
+                // console.log(test_name);
+                var op="";
+                $.ajax({
+                    type:'get',
+                    url:'{!!URL::to('findReferrer')!!}',
+                    data:{'id':test_name},
+                    dataType:'json',
+                    success:function(data){
+                        console.log("referrer");
+                        console.log(data.referref_fee);
+
+                        a.find('.testreferrer').val(data.referref_fee);
+                        
+                    },
+                    error:function(){
+
+                    }
+                });
+                
+                
+            });
+
+        });
+
     </script>
 
 </body>

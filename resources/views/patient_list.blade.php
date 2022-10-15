@@ -13,42 +13,44 @@
     @include('admin.sidebar')
 
     <div class="main">
-
         <div>
-            <h4>Old Patient / Add Test:</h4>
+            <h4>Patient List:</h4>
         </div>
         <br>
         <div class="heading">
-            <h4>Test Details:</h4>
+            <h4>Patient Details:</h4>
         </div>
         <div>
-
-            <label>Enter Patient ID / Mobile Number<span style="color:red;">*</span>:</label>
+            <label>Enter Patient ID / Mobile Number / Name<span style="color:red;">*</span>:</label>
             <input> <button class="btn btn-primary">Search</button>
-
             <br>
+
+            <?php
+
+            use App\Models\Patient;
+
+            $patient_details = Patient::all();
+            ?>
             <table>
                 <tr>
+                    
+                    <th>ID</th>
                     <th>Patient Name</th>
                     <th>Mobile Number</th>
-                    <th>ID</th>
+                    <th>Action</th>
                 </tr>
+                @foreach($patient_details as $p_details)
                 <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
+                    <td>{{$p_details->id}}</td>
+                    <td>{{$p_details->p_name}}</td>
+                    <td>{{$p_details->p_mobile}}</td>
+                    <td><a href="/patient_profile/{{$p_details->id}}" style="direction:none;">Action</a></td>
                 </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                </tr>
+                @endforeach
+
             </table>
+
+
             <br>
             <br>
             <label class="first-row">Add Test<span style="color:red;">*</span>:</label>

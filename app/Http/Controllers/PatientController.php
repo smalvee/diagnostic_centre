@@ -17,9 +17,9 @@ class PatientController extends Controller
         return view('new_patient');
     }
 
-    public function old_patient()
+    public function patient_list()
     {
-        return view('old_patient');
+        return view('patient_list');
     }
 
     /**

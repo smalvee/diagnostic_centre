@@ -52,6 +52,7 @@
                     <option value="admin">Admin</option>
                     <option value="accountant">Accountant</option>
                     <option value="receptionist">Receptionist</option>
+                    <option value="doctor">Doctor</option>
                 </select>
             </div>
             

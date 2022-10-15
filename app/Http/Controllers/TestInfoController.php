@@ -90,4 +90,16 @@ class TestInfoController extends Controller
     {
         //
     }
+
+    public function findPrice(Request $request)
+    {
+        $p=test_info::select('price')->where('id', $request->id)->first();
+        return response()->json($p);
+    }
+
+    public function findReferrer(Request $request)
+    {
+        $q=test_info::select('referref_fee')->where('id', $request->id)->first();
+        return response()->json($q);
+    }
 }

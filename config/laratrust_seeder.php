@@ -23,6 +23,9 @@ return [
         ],
         'receptionist' => [
             'profile' => 'r,u',
+        ],
+        'doctor' => [
+            'profile' => 'r,u',
         ]
     ],
 

@@ -32,7 +32,7 @@ Route::group(['missleware' => ['auth']], function(){
 
 
 Route::get('new_patient', [PatientController::class, 'new_patient'])->middleware(['auth']);
-Route::get('old_patient', [PatientController::class, 'old_patient'])->middleware(['auth']);
+Route::get('patient_list', [PatientController::class, 'patient_list'])->middleware(['auth']);
 Route::post('patient_insert', [PatientController::class, 'store'])->middleware(['auth']);
 
 Route::get('payment_collection', [PaymentController::class, 'index'])->middleware(['auth']);
@@ -44,5 +44,14 @@ Route::get('delete/{id}', [TestController::class, 'destroy'])->middleware(['auth
 Route::post('add_test_category', [TestController::class, 'store'])->middleware(['auth']);
 
 Route::post('add_test_info', [TestInfoController::class, 'store'])->middleware(['auth']);
+
+
+
+
+// ajax root
+Route::get('/findPrice', [TestInfoController::class, 'findPrice'])->middleware(['auth']);
+Route::get('/findReferrer', [TestInfoController::class, 'findReferrer'])->middleware(['auth']);
+
+
 
 require __DIR__.'/auth.php';

@@ -3,8 +3,8 @@
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <a href="new_patient" class="">New Patient entry / Add Test</a>
-        <a href="old_patient" class="">Old Patient / Add test</a>
+        <a href="new_patient" class="">New Patient entry</a>
+        <a href="patient_list" class="">Patient List</a>
         <a href="payment_collection" class="">Payment / Due Collection</a>
         <a href="#" class="">Collection History</a>
         <a href="#" class="">Patient List/ Search Patient</a>
