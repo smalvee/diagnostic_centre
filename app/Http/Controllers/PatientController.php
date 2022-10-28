@@ -62,7 +62,7 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('patient_profile', compact('id'));
     }
 
     /**

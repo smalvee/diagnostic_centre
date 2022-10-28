@@ -102,4 +102,10 @@ class TestInfoController extends Controller
         $q=test_info::select('referref_fee')->where('id', $request->id)->first();
         return response()->json($q);
     }
+
+    public function findTestId(Request $request)
+    {
+        $q=test_info::select('id')->where('id', $request->id)->first();
+        return response()->json($q);
+    }
 }

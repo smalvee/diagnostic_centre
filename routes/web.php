@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\LabController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TestController;
@@ -33,6 +35,7 @@ Route::group(['missleware' => ['auth']], function(){
 
 Route::get('new_patient', [PatientController::class, 'new_patient'])->middleware(['auth']);
 Route::get('patient_list', [PatientController::class, 'patient_list'])->middleware(['auth']);
+Route::get('patient_profile/{id}', [PatientController::class, 'show'])->middleware(['auth']);
 Route::post('patient_insert', [PatientController::class, 'store'])->middleware(['auth']);
 
 Route::get('payment_collection', [PaymentController::class, 'index'])->middleware(['auth']);
@@ -45,12 +48,24 @@ Route::post('add_test_category', [TestController::class, 'store'])->middleware([
 
 Route::post('add_test_info', [TestInfoController::class, 'store'])->middleware(['auth']);
 
+Route::post('lab_test_insert', [LabController::class, 'testrecord'])->middleware(['auth']);
+Route::post('add_service_list', [LabController::class, 'store'])->middleware(['auth']);
+
+
+Route::get('service_list/{test_reference}', [AccountsController::class, 'view_service'])->middleware(['auth']);
+Route::post('update_service_list', [AccountsController::class, 'update_service_list'])->middleware(['auth']);
+Route::get('service_list/{test_reference}', [AccountsController::class, 'view_service'])->middleware(['auth']);
+Route::get('/invoice/{test_reference}', [AccountsController::class, 'invoice'])->middleware(['auth']);
+
 
 
 
 // ajax root
 Route::get('/findPrice', [TestInfoController::class, 'findPrice'])->middleware(['auth']);
 Route::get('/findReferrer', [TestInfoController::class, 'findReferrer'])->middleware(['auth']);
+
+
+
 
 
 
