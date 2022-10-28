@@ -51,7 +51,7 @@ class PatientController extends Controller
         $patient_insert->p_d_name            = $request->input('p_d_name');
         $patient_insert->p_r_d_name            = $request->input('p_r_d_name'); 
         $patient_insert->save();
-        return redirect()->back()->with('status', 'Add seccessfully');
+        return view('new_patient');
     }
 
     /**
@@ -97,5 +97,17 @@ class PatientController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request['patient_search'] ?? "";
+        if ($search != ""){
+            $patient = Patient::where('p_mobile', $search)->get();
+        } else {
+            $patient = Patient::all();
+        }
+        $data = compact('patient');
+        return view('search_result')->with($data);
     }
 }

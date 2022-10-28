@@ -10,7 +10,7 @@
 
 <body>
 
-    @include('admin.sidebar')
+@include('reception.sidebar')
 
     <div class="main">
 

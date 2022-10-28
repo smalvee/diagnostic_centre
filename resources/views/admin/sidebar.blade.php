@@ -6,7 +6,7 @@
         <a href="/new_patient" class="">New Patient entry</a>
         <a href="/patient_list" class="">Patient List</a>
         <a href="/payment_collection" class="">Payment / Due Collection</a>
-        <a href="#" class="">Collection History</a>
+        <!-- <a href="#" class="">Collection History</a>
         <a href="#" class="">Patient List/ Search Patient</a>
         <a href="#" class="">Doctor Referral Payment</a>
         <a href="#" class="">Doctor Wise Test Category Income</a>
@@ -15,10 +15,10 @@
         <a href="#" class="">View All Transaction</a>
         <a href="#" class="">Expaenee Entry</a>
         <a href="#" class="">Expense Summery</a>
-        <a href="#" class="">Cash Book</a>
+        <a href="#" class="">Cash Book</a> -->
     </div>
 
-    <button class="dropdown-btn">Account Section
+    <!-- <button class="dropdown-btn">Account Section
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
@@ -39,38 +39,38 @@
         <a href="#" class="">Collection History</a>
         <a href="#" class="">Daily Referral Paid Summery</a>
         <a href="#" class="">Daily Referral Due Summery</a>
-    </div>
+    </div> -->
 
     <button class="dropdown-btn">Lab Section / Report
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
         <a href="#" class="">Add Test Result</a>
-        <a href="#" class="">Patient List / Search Patient</a>
-        <a href="#" class="">Add test - Report Format</a>
+        <a href="/patient_list" class="">Patient List / Search Patient</a>
+        <!-- <a href="#" class="">Add test - Report Format</a>
         <a href="#" class="">Test Category Entry</a>
         <a href="#" class="">Test Category Wise Report</a>
         <a href="#" class="">Patient Summery</a>
-        <a href="#" class="">Report Done Status</a>
+        <a href="#" class="">Report Done Status</a> -->
     </div>
 
     <button class="dropdown-btn">Administration
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <a href="#" class="">Add User Group</a>
-        <a href="#" class="">Add User</a>
-        <a href="#" class="">Database Repair</a>
+        <!-- <a href="#" class="">Add User Group</a> -->
+        <a href="/add_user" class="">Add User</a>
+        <!-- <a href="#" class="">Database Repair</a>
         <a href="#" class="">View User</a>
         <a href="#" class="">Add Referral Doctor</a>
         <a href="#" class="">Referral Doctor payment</a>
         <a href="#" class="">Purpose Entry</a>
-        <a href="#" class="">Expense Entry</a>
+        <a href="#" class="">Expense Entry</a> -->
         <a href="test_category_entry" class="">Test Category Entry</a>
         <a href="test_entry" class="">test Entry</a>
     </div>
 
-    <button class="dropdown-btn">Management
+    <!-- <button class="dropdown-btn">Management
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
@@ -78,13 +78,13 @@
         <a href="#" class="">Processed</a>
         <a href="#" class="">Shipped</a>
         <a href="#" class="">Returned</a>
-    </div>
+    </div> -->
 
     <button class="dropdown-btn">Account
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <a href="#" class="">Profile</a>
+        <!-- <a href="#" class="">Profile</a> -->
         <a class="">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

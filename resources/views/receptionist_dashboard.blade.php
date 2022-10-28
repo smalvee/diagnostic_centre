@@ -12,10 +12,7 @@
     @include('reception.sidebar')
 
     <div class="main">
-        <h2>Reception Dashboard</h2>
-        <p>Click on the dropdown button to open the dropdown menu inside the side navigation.</p>
-        <p>This sidebar is of full height (100%) and always shown.</p>
-        <p>Some random text..</p>
+        <h2>Welcome to Reception Dashboard</h2>
     </div>
 
     <script>
